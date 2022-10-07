@@ -14,10 +14,8 @@
 #include <string>     /* string */
 #include "functions.h"
 
-/*
- * additional directives here
- * 
- */
+using std::cout;
+using std::endl;
 
 
 #endif /* STACKS_MAIN_H */

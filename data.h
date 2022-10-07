@@ -11,6 +11,8 @@
 
 #include <string>
 using std::string;
+using std::cout;
+using std:endl;
 
 /*
  * Simple data structure to simulate the idea of an ADT which contains
@@ -19,8 +21,8 @@ using std::string;
  * a single simple structure that contains both an identifier and data.
  */
 struct Data {
-    int id;
-    string information;
+    int id; // indentifier
+    string information; // information
 };
 
 #endif /* STACKS_DATA_H */
