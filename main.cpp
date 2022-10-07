@@ -9,8 +9,18 @@ int main(int argc, char **argv) {
     // here for the rand_string() function
     // if you don't use it, get rid of this
     srand(time(NULL));
-    cout << argc << endl;
-    cout << argv[0] << endl;
+    int x;
+
+    if (argc == 2){
+        x = atoi(argv[1]); // converts to int and takes floats to ints whcih is bad no sure how to change
+        if (x != 0){
+            Stack s1(x);
+        } else {
+            cout << "Incorrect argument" << endl;
+        }
+    } 
+
+    return 0;
 
 
 
@@ -105,5 +115,4 @@ int main(int argc, char **argv) {
     
     // WHEN YOU SUBMIT, DELETE ALL THESE INSTRUCTIONALCOMMENTS
     
-    return 0;
 }
