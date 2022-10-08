@@ -10,11 +10,10 @@ Stack::Stack(int sz){
     top = -1;
     if(sz > 2) {
         size = sz; 
-        stack = new Data*[size];
     } else {
         size = REVERT;
-        stack = new Data*[size];
     }
+    stack = new Data*[size];
 }
 
 bool Stack::push(int id, string* info) {
@@ -65,10 +64,11 @@ bool Stack::isEmpty() {
 
 Stack::~Stack(){
     delete []stack; // deletes 1d stack of pointers
-    // may need a foo loop to delete each pointer in stack
+    // may need a for loop to delete each pointer in stack
 }
 
 void Stack::dumpStack() { // testing, prints all struct locations
+    std::cout << size << std::endl;
     for (int i = 0;i < size; i++){
        std::cout << stack[i] << std::endl;
     }

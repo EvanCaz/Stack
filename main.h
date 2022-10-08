@@ -15,6 +15,7 @@
 #include "functions.h"
 #include "stack.h"
 
+#define MULTIPLIER 6
 using std::cout;
 using std::endl;
 

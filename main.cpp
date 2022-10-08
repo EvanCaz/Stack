@@ -9,25 +9,36 @@ int main(int argc, char **argv) {
     // here for the rand_string() function
     // if you don't use it, get rid of this
     srand(time(NULL));
-    int x;
-    string y = "test string"; // variable defintion since push accepts a pointer
+    int sz, rndValue;
+    string test = "test string"; // variable defintion since push accepts a pointer
+    string strtemp;
+    
 
     if (argc == 2){
-        x = atoi(argv[1]); // converts string index to int and takes floats to ints whcih is bad not sure how to change
-        if (x != 0){
-            Stack s1(x); // creating stack of the size passes in command line
-            Data d1; // empty struct for push and peek
-            s1.peek(&d1); 
-            cout << d1.id << endl << d1.information << endl; // test peek on empty stack
-            cout << s1.isEmpty() << endl; // isempty on empty stack
-            s1.push(19, &y);
-            cout << s1.isEmpty() << endl; // is empty on non empty stack
-            s1.peek(&d1);
-            cout << d1.id << endl << d1.information << endl; // test peek on non empty stack
-            s1.pop(&d1);
-            cout << d1.id << endl << d1.information << endl; // test pop after push on non empty stack
-            cout << s1.isEmpty() << endl; // is empty on empty stack after manipulation
-            s1.dumpStack();
+        sz = atoi(argv[1]); // converts string index to int and takes floats to ints whcih is bad not sure how to change
+        if (sz != 0){
+            Stack s1(sz); // creating stack of the size passes in command line
+            cout << "Testing \"isEmpty\" on empty stack..." << endl;
+            cout << "Empty(1 success, 0 failure): " << s1.isEmpty() << endl;
+            cout << "Testing \"peek\" and \"pop\" on empty stack with empty struct..." << endl;
+            Data d1, d2, d3;
+            cout << "peek(1 success, 0 failure): " << s1.peek(&d1) << endl << "pop(1 success, 0 failure): " << s1.pop(&d2) << endl;
+            cout << "peek data struct contents: " << d1.id << " : " << d1.information << endl;
+            cout << "pop data struct contents: " << d2.id << " : " << d2.information << endl;
+            cout << endl << "Testing on stack after being filled with structs containing random strings and incrementing ints" << endl;
+            cout << "Filling stack..." << endl;
+            rand_string(&strtemp); // get random string to be passed
+            cout << s1.push(10, &strtemp) << endl;
+            s1.peek(&d3);
+            cout << d3.id << " " << d3.information << endl;
+            // for(int i=0; i<(sz+1); i++){ // for overflow
+                
+            //     cout << "Push (1 success, 0 failure): " << s1.push(i*MULTIPLIER, &strtemp) << endl;
+            // }
+            // s1.dumpStack();
+
+        
+
 
 
 
@@ -126,12 +137,6 @@ int main(int argc, char **argv) {
     
 
 
-    // make 20 random strings, store them, display them
-    std::string strtemp;
-    for(int i=0; i<20; i++){
-        rand_string(&strtemp);
-        std::cout << strtemp << std::endl;
-    }
     
 
     
