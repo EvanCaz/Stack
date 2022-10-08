@@ -1,17 +1,20 @@
-/*
- * Your comment header here
- * modify this file as needed to complete the assignment
- */
+/*********************
+ * Evan Cazares
+ * Assignment: coding05
+ * toy problem demostarting excetion handling with pass by refernce, 
+ * dev testing, and dynamic memory allocation
+**********************/
 
 // each cpp includes ONLY it's header directly
 #include "stack.h"
 
-Stack::Stack(int sz){
+Stack::Stack(int *sz){
     top = -1;
-    if(sz > 2) {
-        size = sz; 
-    } else {
+    if(*sz < 2) {
         size = REVERT;
+        *sz = REVERT; // to be used in main so the foor loops dont multiple by a -#
+    } else {
+        size = *sz;
     }
     stack = new Data*[size];
 }

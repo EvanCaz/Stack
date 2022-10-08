@@ -1,13 +1,13 @@
-/*
- * your header here
- * 
- */
+/*********************
+ * Evan Cazares
+ * Assignment: coding05
+ * toy problem demostarting excetion handling with pass by refernce, 
+ * dev testing, and dynamic memory allocation
+**********************/
 
 #ifndef STACKS_MAIN_H
 #define STACKS_MAIN_H
 
-// you probably need all these,
-// but if you don't get rid of what you don't need
 #include <stdlib.h>   /* srand, rand */
 #include <time.h>     /* time */
 #include <iostream>   /* cout, endl */
@@ -15,8 +15,8 @@
 #include "functions.h"
 #include "stack.h"
 
-#define MULTIPLIER 10
-#define MAX 4
+#define MULTIPLIER 10 // dynamic testing
+#define MAX 4 // since there are only four ways to interact with a stack
 using std::cout;
 using std::endl;
 

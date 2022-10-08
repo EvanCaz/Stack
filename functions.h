@@ -1,7 +1,9 @@
-/*
- * Your comment header here
- * modify this file as needed to complete the assignment
- */
+/*********************
+ * Evan Cazares
+ * Assignment: coding05
+ * toy problem demostarting excetion handling with pass by refernce, 
+ * dev testing, and dynamic memory allocation
+**********************/
 
 #ifndef STACKS_FUNCTIONS_H
 #define STACKS_FUNCTIONS_H
