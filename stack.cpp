@@ -68,7 +68,7 @@ Stack::~Stack(){
 }
 
 void Stack::dumpStack() { // testing, prints all struct locations
-    std::cout << size << std::endl;
+    std::cout << "size: " << size << std::endl;
     for (int i = 0;i < size; i++){
        std::cout << stack[i] << std::endl;
     }

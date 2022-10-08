@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     // here for the rand_string() function
     // if you don't use it, get rid of this
     srand(time(NULL));
-    int sz, rndValue;
+    int sz, choice;
     string test = "test string"; // variable defintion since push accepts a pointer
     string strtemp;
     
@@ -21,21 +21,62 @@ int main(int argc, char **argv) {
             cout << "Testing \"isEmpty\" on empty stack..." << endl;
             cout << "Empty(1 success, 0 failure): " << s1.isEmpty() << endl;
             cout << "Testing \"peek\" and \"pop\" on empty stack with empty struct..." << endl;
-            Data d1, d2, d3;
+            Data d1, d2;
             cout << "peek(1 success, 0 failure): " << s1.peek(&d1) << endl << "pop(1 success, 0 failure): " << s1.pop(&d2) << endl;
             cout << "peek data struct contents: " << d1.id << " : " << d1.information << endl;
             cout << "pop data struct contents: " << d2.id << " : " << d2.information << endl;
-            cout << endl << "Testing on stack after being filled with structs containing random strings and incrementing ints" << endl;
-            cout << "Filling stack..." << endl;
-            rand_string(&strtemp); // get random string to be passed
-            cout << s1.push(10, &strtemp) << endl;
-            s1.peek(&d3);
-            cout << d3.id << " " << d3.information << endl;
-            // for(int i=0; i<(sz+1); i++){ // for overflow
-                
-            //     cout << "Push (1 success, 0 failure): " << s1.push(i*MULTIPLIER, &strtemp) << endl;
-            // }
-            // s1.dumpStack();
+            cout << "defined testing.." << endl;
+            cout << "Filling stack past size..." << endl;
+            for(int i=0; i<(sz*MULTIPLIER); i++){ // for overflow
+                rand_string(&strtemp);
+                cout << "Push number " << (i+1) << " (1 success, 0 failure): " << s1.push(i*MULTIPLIER, &strtemp) << endl;
+            }
+            cout << endl << "Testing pop and peek on full stack past stack size..." << endl;
+            for(int i=0; i<(sz*MULTIPLIER); i++){ // for overflow
+                if(i%2 == 0){ // splits actions into two paths for both peek and pop
+                    Data testObj;
+                    cout << "Test pop  " << (i+1) << " (1 success, 0 failure): " << s1.pop(&testObj) << endl;
+                } else {
+                    Data testObj2;
+                    cout << "Test peek " << (i+1) << " (1 success, 0 failure): " << s1.pop(&testObj2) << endl;
+                }
+            }
+            cout << endl << "Testing push and pop on middle of stack..." << endl;
+            for(int i=0; i<(sz*MULTIPLIER); i++){ // for overflow
+                if(i%2 == 0){ // splits actions into two paths for both peek and pop
+                    Data testObj;
+                    cout << "Test pop  " << (i+1) << " (1 success, 0 failure): " << s1.pop(&testObj) << endl;
+                } else {
+                    rand_string(&strtemp);
+                    cout << "Test push " << (i+1) << " (1 success, 0 failure): " << s1.push(i*MULTIPLIER, &strtemp) << endl;
+                }
+            }
+            cout << "Random testing next with switch statment to call random methods on stack..." << endl;
+            for(int i=0; i<(sz*MULTIPLIER); i++){ // for overflow
+                choice = rand()%MAX;
+                Data testObj;
+                switch(choice){
+                    case 0:
+                        cout << "Test empty number " << (i+1) << " (1 empty, 0 not empty): " << s1.isEmpty() << endl;
+                        break;
+                    case 1:
+                        cout << "Test pop number " << (i+1) << " (1 success, 0 underflow): " << s1.pop(&testObj) << endl;
+                        cout << testObj.id << " : " << testObj.information << endl;
+                        break;
+                    case 2:
+                        cout << "Test peek number " << (i+1) << " (1 success, 0 underflow): " << s1.peek(&testObj) << endl;
+                        cout << testObj.id << " : " << testObj.information << endl;
+                        break;
+                    case 3:
+                        rand_string(&strtemp);
+                        cout << "Test push number " << (i+1) << " (1 success, 0 overflow): " << s1.push(i*MULTIPLIER, &strtemp) << endl;
+                        break;
+                }
+            }
+
+
+            cout << endl;
+            s1.dumpStack();
 
         
 

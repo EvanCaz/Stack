@@ -15,7 +15,8 @@
 #include "functions.h"
 #include "stack.h"
 
-#define MULTIPLIER 6
+#define MULTIPLIER 10
+#define MAX 4
 using std::cout;
 using std::endl;
 
