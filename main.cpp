@@ -10,16 +10,18 @@ int main(int argc, char **argv) {
     // if you don't use it, get rid of this
     srand(time(NULL));
     int x;
+    string y = "h";
 
     if (argc == 2){
-        x = atoi(argv[1]); // converts to int and takes floats to ints whcih is bad no sure how to change
+        x = atoi(argv[1]); // converts string index to int and takes floats to ints whcih is bad not sure how to change
         if (x != 0){
             Stack s1(x);
+            cout << s1.isEmpty() << endl; // one means true and stack is empty
+            s1.push(19, &y);
         } else {
             cout << "Incorrect argument" << endl;
         }
     } 
-
     return 0;
 
 
@@ -100,12 +102,16 @@ int main(int argc, char **argv) {
      * it and understand it and can use it yourself in your code.
      * ***************************************************************/
     
+
+
     // make 20 random strings, store them, display them
     std::string strtemp;
     for(int i=0; i<20; i++){
         rand_string(&strtemp);
         std::cout << strtemp << std::endl;
     }
+    
+
     
     /* ***************************************************************
      * Your code will be tested by applying your stack to a custom main
