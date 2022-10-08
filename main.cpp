@@ -10,18 +10,40 @@ int main(int argc, char **argv) {
     // if you don't use it, get rid of this
     srand(time(NULL));
     int x;
-    string y = "h";
+    string y = "test string"; // variable defintion since push accepts a pointer
 
     if (argc == 2){
         x = atoi(argv[1]); // converts string index to int and takes floats to ints whcih is bad not sure how to change
         if (x != 0){
-            Stack s1(x);
-            cout << s1.isEmpty() << endl; // one means true and stack is empty
+            Stack s1(x); // creating stack of the size passes in command line
+            Data d1; // empty struct for push and peek
+            s1.peek(&d1); 
+            cout << d1.id << endl << d1.information << endl; // test peek on empty stack
+            cout << s1.isEmpty() << endl; // isempty on empty stack
             s1.push(19, &y);
+            cout << s1.isEmpty() << endl; // is empty on non empty stack
+            s1.peek(&d1);
+            cout << d1.id << endl << d1.information << endl; // test peek on non empty stack
+            s1.pop(&d1);
+            cout << d1.id << endl << d1.information << endl; // test pop after push on non empty stack
+            cout << s1.isEmpty() << endl; // is empty on empty stack after manipulation
+            s1.dumpStack();
+
+
+
+
+
+
+
+
+
+
         } else {
             cout << "Incorrect argument" << endl;
         }
-    } 
+    } else {
+        cout << "Please Enter correct amount of arguments" << endl;
+    }
     return 0;
 
 

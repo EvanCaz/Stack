@@ -6,9 +6,11 @@
 #ifndef STACK_H
 #define STACK_H
 
-#define DFSIZE = 10
 
 #include "data.h"
+#include <iostream>
+
+#define REVERT 10
 
 class Stack {
 
@@ -29,6 +31,9 @@ public:
     bool peek(Data*); // same thing but does not decrement varaible top
     bool isEmpty(); // retunrs true when top is -1
     bool push(int, string*); // gets passes an identifier and string point to struct data, point then gets put ontop of stack
+    
+    void dumpStack(); // testing
 };
+
 
 #endif //STACK_H

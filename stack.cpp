@@ -12,19 +12,19 @@ Stack::Stack(int sz){
         size = sz; 
         stack = new Data*[size];
     } else {
-        size = DFSIZE;
+        size = REVERT;
         stack = new Data*[size];
     }
 }
 
 bool Stack::push(int id, string* info) {
     bool flag = false;
-    if ((top < (size - 1)) && !info->empty() && id > 0){ // validation of inputs and room
-        Data* dptr = new Data; // creates point
+    if ((top < (size - 1)) && !info->empty() && id > 0){ // validation of inputs and room, pointer notation since string is pointer
+        Data* dptr = new Data; // creates new pointer to struct data which will contatin info passed from method
         dptr->id = id; // set attribute
-        dptr->information = *info; // set attriubte, derefernce since the parametet in function is pointer, making it pointless
+        dptr->information = *info; // set attriubte, derefernce since the parametet in function is pointer and the attribute in the sturct inst, making it pointless
         top++;
-        stack[top] = dptr; // sets new highest index of stack to pointer
+        stack[top] = dptr; // sets new highest index of stack to pointer which can be deleted in pop, meaning no extra delete in stack deconstrucotr
         flag = true;
     }
     return flag;
@@ -55,7 +55,6 @@ bool Stack::peek(Data* dptr){ // receives empty data struct location
         dptr->id = stack[top]->id;
         dptr->information = stack[top]->information;
         flag = true;
-        delete stack[top]; // deletes pointer at top of stack, deallocating
     }
     return flag;
 }
@@ -66,4 +65,11 @@ bool Stack::isEmpty() {
 
 Stack::~Stack(){
     delete []stack; // deletes 1d stack of pointers
+    // may need a foo loop to delete each pointer in stack
+}
+
+void Stack::dumpStack() { // testing, prints all struct locations
+    for (int i = 0;i < size; i++){
+       std::cout << stack[i] << std::endl;
+    }
 }
