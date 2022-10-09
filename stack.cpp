@@ -24,7 +24,7 @@ bool Stack::push(int id, string* info) {
     if ((top < (size - 1)) && !info->empty() && id > 0){ // validation of inputs and room, pointer notation since string is pointer
         Data* dptr = new Data; // creates new pointer to struct data which will contatin info passed from method
         dptr->id = id; // set attribute
-        dptr->information = *info; // set attriubte, derefernce since the parametet in function is pointer and the attribute in the sturct inst, making it pointless
+        dptr->information = *info; // set attriubte, derefernce since the parametet in function is pointer and the attribute in the sturct inst, not making it pointless as i learned!
         top++;
         stack[top] = dptr; // sets new highest index of stack to pointer which can be deleted in pop, meaning no extra delete in stack deconstrucotr
         flag = true;
@@ -66,8 +66,12 @@ bool Stack::isEmpty() {
 }
 
 Stack::~Stack(){
+    for (int i = 0; i < size;i++ ){
+        delete stack[i]; // does not have to follow stack rules, can just delete indexs 0-n
+    }
     delete []stack; // deletes 1d stack of pointers
     // may need a for loop to delete each pointer in stack
+    // turns out yes i did 
 }
 
 void Stack::dumpStack() { // testing, prints all struct locations
